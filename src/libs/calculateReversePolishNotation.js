@@ -2,10 +2,12 @@ module.exports = (equation) => {
 	const parsedEquation = equation.split(' ');
 	let s = [];
 	let tokenParseHistory = [];
-	for (var i in parsedEquation) {
-		let t=e[i], n=+t;
+	let finalResult;
+
+	for (let i = 0; i < parsedEquation.length; i++) {
+		let t = parsedEquation[i], n = +t;
 		if(!t) continue;
-		if(n === t) {
+		if(n == t) {
 			s.push(n);
 		} else {
 			if ('+-*/^'.indexOf(t) === -1) {
@@ -25,7 +27,15 @@ module.exports = (equation) => {
 		}
 		tokenParseHistory.push(`${t}:${s}`);
 	}
+
 	if(s.length > 1) {
-		throw new RangeError('Note enough operands');
+		throw new RangeError('Not enough operands');
+	}
+
+	finalResult = Number.parseFloat(s);
+
+	return {
+		arithmaticHistory: tokenParseHistory,
+		finalResult,
 	}
 };

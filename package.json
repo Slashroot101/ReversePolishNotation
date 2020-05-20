@@ -17,6 +17,10 @@
   },
   "homepage": "https://github.com/Slashroot101/ReversePolishNotation#readme",
   "dependencies": {
+    "colors": "^1.4.0",
     "commander": "^5.1.0"
+  },
+  "devDependencies": {
+    "mocha": "^7.1.2"
   }
 }
